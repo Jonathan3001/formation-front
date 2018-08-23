@@ -18,7 +18,7 @@ var nosPrenoms = [
     "Alpha", 
     "Kévin"];
 
-console.log(nosPrenoms)
+console.log(nosPrenoms);
 
 var Coordonnee = {
     prenom : "Hugo",
