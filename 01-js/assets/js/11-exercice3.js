@@ -80,17 +80,55 @@ console.log(PremierTrimestre);
 
 // 2 - Afficher la moyenne de toutes les matières pour chaque etudiant, puis calculer leurs moyenne générale
 
-document.write("<ol>");
-for (var i = 0; i <= PremierTrimestre.length; i++){
-    document.write("<li>" + PremierTrimestre[i].prenom + " " + PremierTrimestre[i].nom + "</li>");
+// document.write("<ol>");
+// for (var i = 0; i <= PremierTrimestre.length; i++){
+//     document.write("<li>" + PremierTrimestre[i].prenom + " " + PremierTrimestre[i].nom + "</li>");
 
-    for (matiere in PremierTrimestre[i].moyenne){
-        document.write("<ul>" + matiere + "</ul>");
-        console.log(matiere);
+//     for (matiere in PremierTrimestre[i].moyenne){
+//         document.write("<ul>" + matiere + "</ul>");
+//         console.log(matiere);
 
-        // for (note in matiere[i].moyenne.length);
-        // document.write("<ul>" + moyenne.length + "</ul>");
-        // console.log(moyenne.length);
+//         for (note in matiere[i].moyenne.length);
+//         document.write("<ul>" + moyenne.length + "</ul>");
+//         console.log(moyenne.length);
+//     }
+// }
+// document.write("</ol>");
+
+/* ----- Correction ----- */
+
+
+
+// 1 - Je souhaite afficher la liste de mes étudiants
+document.write("<ol>")
+for(let i = 0; i < PremierTrimestre.length; i++){
+    console.log(PremierTrimestre[i]);
+
+    // 2 - Afficher les étudiants sur ma page
+    let etudiant = PremierTrimestre[i];
+    document.write("<li>");
+    document.write(etudiant.prenom + " " + etudiant.nom);
+    
+    var nombreDeMatiere = 0, sommeDesNotes = 0;
+
+    // 3 - Afficher la moyenne obtenu par mon etudiant a chaque matière
+    document.write("<ul>");
+    for(let matiere in etudiant.moyenne){
+
+        nombreDeMatiere++;
+        sommeDesNotes += etudiant.moyenne[matiere];
+
+        //  - Affichage sur la page
+        document.write("<li>");
+        document.write(matiere + " : " + etudiant.moyenne[matiere]);
+        document.write("</li>");
+        
     }
+    document.write("<li>");
+        document.write('<strong>Moyenne Générale :</strong>' + (sommeDesNotes / nombreDeMatiere).toFixed(2));
+    document.write("</li>");
+
+    document.write("</ul>");
+    document.write("</li><br>");
 }
-document.write("</ol>");
+document.write("</ol>")
