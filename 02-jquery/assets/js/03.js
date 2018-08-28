@@ -14,11 +14,9 @@ $(function(){
 
     // $('div').css('background', 'green');
     // $('div').css('color', 'red');
-    // $('div').show('slow');
-
-    $('p').hide(1000).css('color', 'blue').css('font-size', '30px').delay(2000).show(500);
+    // $('div').show('slow');   
 
 }); // -- fin du hide()
     // alert('fin du hide() !');
-
+ $('p').hide(1000).css('color', 'blue').css('font-size', '30px').delay(2000).show(500);
 }); // -- fin de $

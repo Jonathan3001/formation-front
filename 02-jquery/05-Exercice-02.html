@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire de Contact</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        form fieldset {
+            border: 1px solid #CCC;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+            width: 500px;
+            margin: 40px auto;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <form id="MonFormulaire" action="contact.php" method="GET">
+        <fieldset>
+            <input type="text" id="fullname" placeholder="Nom et Prénom">
+            <input type="email" id="email" placeholder="Email">
+            <input type="tel" id="tel" placeholder="Téléphone">
+            <input type="text" id="sujet" placeholder="Sujet">
+            <textarea id="message" cols="30" rows="10" placeholder="Message..."></textarea>
+            <input type="submit" value="Envoyer ma Demande">
+        </fieldset>
+    </form>    ​
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script> ​
+    <script>
+    
+    /* -------------------------------------------------
+    
+    |             ~~~   LA CONSIGNE     ~~~            |
+    
+    |                                                  |
+    
+    | A partir du Formulaire de Contact ci-dessus :    |
+    
+    |                                                  |
+    
+    |   1. Afficher à l'utilisateur un Récapitulatif   |
+    
+    |   de sa demande de contact.                      |
+    
+    |                                                  |
+    
+    ------------------------------------------------- */
+    
+    
+    
+    // -- 1. Attente que le DOM soit chargé !
+    
+    // $(function () {
+
+    //     $('#MonFormulaire').submit(function(event){
+
+    //     event.preventDefault();
+
+    //     });
+        
+    //     $('<ul><li>' + $('#fullname').val() + '</li>' + '<li>' + $('#email').val() + '</li>' + '<li>' + $('#tel').val() + '</li>' + '<li>' + $('#sujet').val() + '</li>' + '<li>' + $('#message').val() + '</li></ul>').append('body');
+        
+    // });
+
+    /* ----- Correction ----- */
+    // 1 - Ecouter l'évènement "submit" du formulaire
+    $('#MonFormulaire').submit(function (event){
+
+    // 2 - Stopper la redirection HTTP
+    event.preventDefault();
+
+    // 3 - Récupéreation des informations
+    const fullname = $('#fullname').val();
+    const email = $('#email').val();
+    const tel = $('#tel').val();
+    const sujet = $('#sujet').val();
+    const message = $('#message').val();
+
+    // 4 - Récapitulatif
+    $(this).replaceWith(`
+        <p>
+            Bonjour <strong>${fullname}</strong><em>(${email})</em><br><br>
+            Vous nous avez contacté au sujet de : <strong>${sujet}</strong><br>
+            Nous reviendrons vers vous dans les plus brefs délais au
+            <strong>${tel}</strong><br><br><u>Ci dessous, votre message : </u><br>${message}
+            </p>
+        `);
+    });
+    
+    </script>
+
+    </body>
+</html>
