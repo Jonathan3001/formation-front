@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 4</title>
+</head>
+<body>
+
+    <!-- CONSIGNE : Avec l'aide de jQuery, vous devrez :
+    
+        1. A l'aide d'une API de Géolocalisation, vous affichez dans un paragraphe du formulaire l'adresse IP ainsi que la Ville et/ou Code Postal de l'utilisateur connecté.
+    
+        Utilisation de JSONP : geoip.nekudo.com || ipapi.co
+    
+        -->
+
+        <!-- <script>
+            function foo(data) {
+                document.write("IP: ", ip.city);
+                document.write("City: ", data.city);
+                document.write("Country: ", data.country.name);
+                document.write("Latitude: ", data.location.latitude);
+                document.write("Longitude: ", data.location.longitude);
+            }
+        </script> -->
+
+        <form action="">        
+            <h3>Connexion</h3>
+            <input placeholder="Email" type="text">
+            <br>
+            <input placeholder="Password" type="password">        
+        </form>
+        
+        <script>
+            $(function () {
+
+                // 1. Une requète AJAX SIMPLE
+                $.ajax('http://geoip.nekudo.com/api/')
+                    .done(function (data) {
+                        console.log(data);
+                        console.log(data.ip);
+                    });
+
+                // 2. avec getJSON
+                $.getJSON('https://ipapi.co/json', data => {
+                    console.log(data)
+
+                    $(`
+                            <p>
+                                Votre IP est surveillée : ${data.ip}<br>
+                                ${data.org} - ${data.region}
+                            </p>
+                        `).css({ background: 'yellow', color: 'red' }).appendTo('body');
+
+                });
+
+            });
+        </script>
+
+        <script src="http://geoip.nekudo.com/api?callback=foo"></script>
+
+    <script src="./assets/js/08.Exercice04.js"></script>
+</body>
+</html>
