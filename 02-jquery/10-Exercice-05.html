@@ -96,10 +96,36 @@
         // -- En attente de jQuery
 
         $(function () {
-            $.getJSON('https://jsonplaceholder.typicode.com/posts', articles =>{
+
+            // -- 1. Récupération des articles de l'API
+            $.getJSON('https://jsonplaceholder.typicode.com/posts'), articles =>{
+            
                 console.log(articles);
-            //     $(`data[i]`).appendTo('article');
-                for(i = 0; i < 10; i++){
+            //     $(`data[i]`).appendTo('articles');
+
+                // -- 2. Je parcours les articles et je les affiches sur la page
+                $.each(articles, function(index, article){
+                    console.log(index + " " + article.title);
+                    
+                    // -- Affichage dans la page
+                    $(`
+                    <section>
+                        <header>
+                            <h1>${article.title}</h1>
+                        </header>
+                        <article>
+                            ${article.body}
+                        </article>
+                    </section>`).appendTo($('main'));
+
+                    // -- Récupérer uniquement 10 articles
+                    if(index === 9){
+                        return false;
+                    }
+                }); // fin $.each
+
+
+                /* for(i = 0; i < 10; i++){
                     console.log(articles[i]);
                     // $(`<p>body:${articles[i].body}<br>id:${articles[i].id}<br>title:${articles[i].title}<br>userId:${articles[i].userId}</p>`).appendTo('article');
                     $(`<section>
@@ -110,10 +136,17 @@
                     ${articles[i].body}
                 </article>
                 </section>`).appendTo('main');
-                }
-            });
+                } */
+            }; // fin $getJSON
             
+            // -- 4. BONUS : Mark JS
+            $('#markJS').on('input', function(){
+                const keyword = $(this).val();
+                $('section').unmark().mark(keyword);
+            });
+
         }); // end jQuery
+
     
     </script>    
 </body>    
