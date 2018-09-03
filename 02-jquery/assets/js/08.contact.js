@@ -36,7 +36,7 @@
         //     <div class="alert alert-danger">
         //         Veuillez saisir tous les champs.
         //     </div>
-        // `);
+    o    // `);
         // }
 
         // $('#contact').validate({
