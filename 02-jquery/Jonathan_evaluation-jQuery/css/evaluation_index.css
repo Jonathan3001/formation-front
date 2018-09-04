@@ -1,0 +1,70 @@
+nav{
+        background-color: #061339;
+        color: #FFF;
+        width: 100%;
+        font-family: 'Merienda', cursive;
+}
+
+.navbar-brand{
+    color: #FFF;
+    margin-left: 150px;
+}
+
+header{
+    padding: 0;
+}
+
+.imgBackground{
+    width: 100%;
+    height: 345px;
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    color: #FFF;
+    bottom: 195px;
+    font-family: 'Merienda', cursive;
+}
+
+h2{
+    height: 50px;
+}
+
+h2, h3{
+    color: #2F4073;
+    font-family: 'Merienda', cursive;
+}
+
+.caroussel{
+    border: 1px solid lightgrey;
+}
+
+.btn-success{
+    text-align: center;
+    width: 444px;
+}
+
+.row{
+    height: 355px;
+}
+
+.textLorem{
+    width: 750px;
+    position: relative;
+    top: 100px;
+}
+
+.teteChat{
+    float: right;
+    position: relative;
+    height: 250px;
+    top: 80px;
+    left: 80px;
+}
+
+.card-footer{
+    text-align: right;
+    color: #FFF;
+    background-color: #061339;
+}
