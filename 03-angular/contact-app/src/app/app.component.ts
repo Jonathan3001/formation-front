@@ -1,16 +1,6 @@
 // Pour déclarer une classe comme composant de notre application, on importe 'component' via @angular/core
 import { Component } from '@angular/core';
-
-class Contact {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address?: object;
-  phone?: number;
-  website?: string;
-  company?: object;
-}
+import {Contact} from './shared/models/contact';
 
 // @Component ets ce qu'on appel un décorateur. Il va nous permettre de définir 3 paramètres essentiels à notre application...
 @Component({
@@ -77,5 +67,10 @@ export class AppComponent {
   showContact(contactCliqueParMonUtilisateur: Contact) {
     this.contactActif = contactCliqueParMonUtilisateur;
     console.log(contactCliqueParMonUtilisateur);
+  }
+
+  addContactToArray(nouveauContact: Contact) {
+    // -- Ajout du contact dans le tableau
+    this.mesContacts.push(nouveauContact);
   }
 }
